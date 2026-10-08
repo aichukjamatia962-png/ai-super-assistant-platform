@@ -1,17 +1,18 @@
-import { NextResponse } from "next/server";
 import { config } from "../../../lib/config";
-import { success } from "../../../lib/api-response";
-import { getSecurityHeaders } from "../../../lib/security/headers";
+import { apiResponse, createRequestContext } from "../../../lib/api";
 
-export async function GET() {
-  return NextResponse.json(
-      success({
-            status: "ok",
-                  service: config.app.name,
-                        version: config.api.version,
-                            }),
-                                {
-                                      headers: getSecurityHeaders(),
-                                          },
-                                            );
-                                            }
+export async function GET(request: Request) {
+  const context = createRequestContext(request);
+
+    return apiResponse(
+        {
+              success: true,
+                    data: {
+                            status: "ok",
+                                    service: config.app.name,
+                                            version: config.api.version,
+                                                  },
+                                                      },
+                                                          context,
+                                                            );
+                                                            }
