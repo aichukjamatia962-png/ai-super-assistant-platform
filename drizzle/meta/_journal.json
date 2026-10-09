@@ -8,6 +8,13 @@
       "when": 1791483457289,
       "tag": "0000_new_luminals",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1791522749097,
+      "tag": "0001_nice_alice",
+      "breakpoints": true
     }
   ]
 }
