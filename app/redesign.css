@@ -1,0 +1,245 @@
+
+/* VELOQIS AI — PREMIUM DESIGN SYSTEM */
+
+:root {
+  --vq-bg: #060608;
+    --vq-panel: #101116;
+      --vq-panel-hover: #171820;
+        --vq-text: #f5f5f7;
+          --vq-muted: #9295a1;
+            --vq-border: #252630;
+              --vq-blue: #3478f6;
+                --vq-blue-hover: #2465df;
+                  --vq-radius: 18px;
+                  }
+
+                  html {
+                    scroll-behavior: smooth;
+                      background: var(--vq-bg);
+                      }
+
+                      body {
+                        margin: 0;
+                          background: var(--vq-bg);
+                            color: var(--vq-text);
+                              font-family: Arial, Helvetica, sans-serif;
+                                -webkit-font-smoothing: antialiased;
+                                }
+
+                                * {
+                                  box-sizing: border-box;
+                                  }
+
+                                  a {
+                                    color: inherit;
+                                      text-decoration: none;
+                                      }
+
+                                      button,
+                                      input,
+                                      textarea,
+                                      select {
+                                        font: inherit;
+                                        }
+
+                                        .vq-shell {
+                                          min-height: 100vh;
+                                            background:
+                                                radial-gradient(
+                                                      ellipse at 50% 0%,
+                                                            rgba(52, 120, 246, 0.10),
+                                                                  transparent 48%
+                                                                      ),
+                                                                          var(--vq-bg);
+                                                                            color: var(--vq-text);
+                                                                            }
+
+                                                                            .vq-container {
+                                                                              width: min(1160px, calc(100% - 40px));
+                                                                                margin-inline: auto;
+                                                                                }
+
+                                                                                .vq-panel {
+                                                                                  background: var(--vq-panel);
+                                                                                    border: 1px solid var(--vq-border);
+                                                                                      border-radius: var(--vq-radius);
+                                                                                      }
+
+                                                                                      .vq-button {
+                                                                                        display: inline-flex;
+                                                                                          align-items: center;
+                                                                                            justify-content: center;
+                                                                                              gap: 10px;
+                                                                                                min-height: 46px;
+                                                                                                  padding: 0 20px;
+                                                                                                    border: 1px solid transparent;
+                                                                                                      border-radius: 12px;
+                                                                                                        background: var(--vq-blue);
+                                                                                                          color: white;
+                                                                                                            font-weight: 600;
+                                                                                                              cursor: pointer;
+                                                                                                                transition:
+                                                                                                                    background 180ms ease,
+                                                                                                                        transform 180ms ease;
+                                                                                                                        }
+
+                                                                                                                        .vq-button:hover {
+                                                                                                                          background: var(--vq-blue-hover);
+                                                                                                                            transform: translateY(-1px);
+                                                                                                                            }
+
+                                                                                                                            .vq-button:focus-visible,
+                                                                                                                            a:focus-visible,
+                                                                                                                            input:focus-visible,
+                                                                                                                            textarea:focus-visible {
+                                                                                                                              outline: 2px solid var(--vq-blue);
+                                                                                                                                outline-offset: 3px;
+                                                                                                                                }
+
+                                                                                                                                .vq-muted {
+                                                                                                                                  color: var(--vq-muted);
+                                                                                                                                  }
+
+                                                                                                                                  .vq-grid {
+                                                                                                                                    display: grid;
+                                                                                                                                      grid-template-columns: repeat(3, minmax(0, 1fr));
+                                                                                                                                        gap: 18px;
+                                                                                                                                        }
+
+                                                                                                                                        .vq-card {
+                                                                                                                                          padding: 24px;
+                                                                                                                                            background: linear-gradient(145deg, #14151b, #0d0e12);
+                                                                                                                                              border: 1px solid var(--vq-border);
+                                                                                                                                                border-radius: var(--vq-radius);
+                                                                                                                                                  transition:
+                                                                                                                                                      border-color 180ms ease,
+                                                                                                                                                          transform 180ms ease;
+                                                                                                                                                          }
+
+                                                                                                                                                          .vq-card:hover {
+                                                                                                                                                            border-color: #42475a;
+                                                                                                                                                              transform: translateY(-3px);
+                                                                                                                                                              }
+
+                                                                                                                                                              @media (max-width: 700px) {
+                                                                                                                                                                .vq-container {
+                                                                                                                                                                    width: calc(100% - 28px);
+                                                                                                                                                                      }
+
+                                                                                                                                                                        .vq-grid {
+                                                                                                                                                                            grid-template-columns: 1fr;
+                                                                                                                                                                              }
+
+                                                                                                                                                                                .vq-card {
+                                                                                                                                                                                    padding: 19px;
+                                                                                                                                                                                      }
+                                                                                                                                                                                      }
+
+                                                                                                                                                                                      @media (prefers-reduced-motion: reduce) {
+                                                                                                                                                                                        *,
+                                                                                                                                                                                          *::before,
+                                                                                                                                                                                            *::after {
+                                                                                                                                                                                                scroll-behavior: auto !important;
+                                                                                                                                                                                                    animation-duration: 0.01ms !important;
+                                                                                                                                                                                                        transition-duration: 0.01ms !important;
+                                                                                                                                                                                                          }
+                                                                                                                                                                                                          }
+                                                                                                                                                                                                          /* VELOQIS AI — PREMIUM ANIMATED HOMEPAGE */
+
+                                                                                                                                                                                                          .home-page {
+                                                                                                                                                                                                          min-height: 100vh;
+                                                                                                                                                                                                          overflow: hidden;
+                                                                                                                                                                                                          background:
+                                                                                                                                                                                                          radial-gradient(ellipse at 50% 12%, rgba(52, 120, 246, 0.16), transparent 38%),
+                                                                                                                                                                                                          #060608;
+                                                                                                                                                                                                          color: #f5f5f7;
+                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                          .topbar {
+                                                                                                                                                                                                          position: relative;
+                                                                                                                                                                                                          z-index: 5;
+                                                                                                                                                                                                          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+                                                                                                                                                                                                          backdrop-filter: blur(18px);
+                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                          .brand {
+                                                                                                                                                                                                          color: #ffffff;
+                                                                                                                                                                                                          font-weight: 800;
+                                                                                                                                                                                                          letter-spacing: -0.8px;
+                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                          .hero {
+                                                                                                                                                                                                          position: relative;
+                                                                                                                                                                                                          isolation: isolate;
+                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                          .hero::before {
+                                                                                                                                                                                                          content: "";
+                                                                                                                                                                                                          position: absolute;
+                                                                                                                                                                                                          z-index: -1;
+                                                                                                                                                                                                          width: 340px;
+                                                                                                                                                                                                          height: 340px;
+                                                                                                                                                                                                          top: 8%;
+                                                                                                                                                                                                          left: 50%;
+                                                                                                                                                                                                          transform: translateX(-50%);
+                                                                                                                                                                                                          border-radius: 50%;
+                                                                                                                                                                                                          background: radial-gradient(circle, rgba(52, 120, 246, 0.22), transparent 68%);
+                                                                                                                                                                                                          filter: blur(22px);
+                                                                                                                                                                                                          pointer-events: none;
+                                                                                                                                                                                                          animation: vq-glow 6s ease-in-out infinite alternate;
+                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                          .hero::after {
+                                                                                                                                                                                                          content: "";
+                                                                                                                                                                                                          position: absolute;
+                                                                                                                                                                                                          z-index: -1;
+                                                                                                                                                                                                          width: 220px;
+                                                                                                                                                                                                          height: 220px;
+                                                                                                                                                                                                          top: 15%;
+                                                                                                                                                                                                          left: calc(50% - 110px);
+                                                                                                                                                                                                          border: 1px solid rgba(110, 155, 255, 0.15);
+                                                                                                                                                                                                          border-radius: 50%;
+                                                                                                                                                                                                          box-shadow: 0 0 65px rgba(52, 120, 246, 0.12), inset 0 0 45px rgba(52, 120, 246, 0.08);
+                                                                                                                                                                                                          pointer-events: none;
+                                                                                                                                                                                                          animation: vq-orbit 22s linear infinite;
+                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                          @keyframes vq-glow {
+                                                                                                                                                                                                          from {
+                                                                                                                                                                                                          opacity: 0.45;
+                                                                                                                                                                                                          scale: 0.9;
+                                                                                                                                                                                                          }
+                                                                                                                                                                                                          to {
+                                                                                                                                                                                                          opacity: 1;
+                                                                                                                                                                                                          scale: 1.12;
+                                                                                                                                                                                                          }
+                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                          @keyframes vq-orbit {
+                                                                                                                                                                                                          from {
+                                                                                                                                                                                                          transform: rotate(0deg) scale(0.92);
+                                                                                                                                                                                                          }
+                                                                                                                                                                                                          to {
+                                                                                                                                                                                                          transform: rotate(360deg) scale(1.08);
+                                                                                                                                                                                                          }
+                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                          @media (max-width: 700px) {
+                                                                                                                                                                                                          .hero::before {
+                                                                                                                                                                                                          width: 260px;
+                                                                                                                                                                                                          height: 260px;
+                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                          .hero::after {
+                                                                                                                                                                                                          width: 170px;
+                                                                                                                                                                                                          height: 170px;
+                                                                                                                                                                                                          left: calc(50% - 85px);
+                                                                                                                                                                                                          }
+                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                          @media (prefers-reduced-motion: reduce) {
+                                                                                                                                                                                                          .hero::before,
+                                                                                                                                                                                                          .hero::after {
+                                                                                                                                                                                                          animation: none;
+                                                                                                                                                                                                          }
+                                                                                                                                                                                                          }
