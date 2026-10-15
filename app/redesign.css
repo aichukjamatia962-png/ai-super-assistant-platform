@@ -1,245 +1,977 @@
+/* Veloqis AI - professional light redesign (mobile-first) */
 
-/* VELOQIS AI — PREMIUM DESIGN SYSTEM */
+.vq-root {
+  --vq-bg: #f6f8fc;
+  --vq-surface: rgba(255, 255, 255, 0.8);
+  --vq-border: #dde5f1;
+  --vq-text: #121a2b;
+  --vq-muted: #5d6b84;
+  --vq-blue: #4f7fe8;
+  --vq-blue-dark: #3a63c4;
+  --vq-silver: #c9d3e3;
+  --vq-shadow: 0 10px 30px rgba(60, 90, 150, 0.1);
+  position: relative;
+  min-height: 100vh;
+  background: var(--vq-bg);
+  color: var(--vq-text);
+  font-family: Inter, "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.55;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
 
-:root {
-  --vq-bg: #060608;
-    --vq-panel: #101116;
-      --vq-panel-hover: #171820;
-        --vq-text: #f5f5f7;
-          --vq-muted: #9295a1;
-            --vq-border: #252630;
-              --vq-blue: #3478f6;
-                --vq-blue-hover: #2465df;
-                  --vq-radius: 18px;
-                  }
+.vq-root *,
+.vq-root *::before,
+.vq-root *::after {
+  box-sizing: border-box;
+}
 
-                  html {
-                    scroll-behavior: smooth;
-                      background: var(--vq-bg);
-                      }
+.vq-root a {
+  color: inherit;
+  text-decoration: none;
+}
 
-                      body {
-                        margin: 0;
-                          background: var(--vq-bg);
-                            color: var(--vq-text);
-                              font-family: Arial, Helvetica, sans-serif;
-                                -webkit-font-smoothing: antialiased;
-                                }
+.vq-root h1,
+.vq-root h2,
+.vq-root h3,
+.vq-root h4,
+.vq-root p,
+.vq-root ul,
+.vq-root ol {
+  margin: 0;
+  padding: 0;
+}
 
-                                * {
-                                  box-sizing: border-box;
-                                  }
+.vq-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 
-                                  a {
-                                    color: inherit;
-                                      text-decoration: none;
-                                      }
+/* Background */
+.vq-bg {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 900px;
+  max-height: 120vh;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: linear-gradient(180deg, #ffffff 0%, #eef3fb 55%, var(--vq-bg) 100%);
+}
 
-                                      button,
-                                      input,
-                                      textarea,
-                                      select {
-                                        font: inherit;
-                                        }
+.vq-bg-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.7;
+}
 
-                                        .vq-shell {
-                                          min-height: 100vh;
-                                            background:
-                                                radial-gradient(
-                                                      ellipse at 50% 0%,
-                                                            rgba(52, 120, 246, 0.10),
-                                                                  transparent 48%
-                                                                      ),
-                                                                          var(--vq-bg);
-                                                                            color: var(--vq-text);
-                                                                            }
+.vq-bg-glow-a {
+  width: 420px;
+  height: 260px;
+  top: -60px;
+  left: -80px;
+  background: #d5e3fb;
+}
 
-                                                                            .vq-container {
-                                                                              width: min(1160px, calc(100% - 40px));
-                                                                                margin-inline: auto;
-                                                                                }
+.vq-bg-glow-b {
+  width: 380px;
+  height: 240px;
+  top: 220px;
+  right: -100px;
+  background: #e6ebf3;
+}
 
-                                                                                .vq-panel {
-                                                                                  background: var(--vq-panel);
-                                                                                    border: 1px solid var(--vq-border);
-                                                                                      border-radius: var(--vq-radius);
-                                                                                      }
+.vq-waves {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.95;
+}
 
-                                                                                      .vq-button {
-                                                                                        display: inline-flex;
-                                                                                          align-items: center;
-                                                                                            justify-content: center;
-                                                                                              gap: 10px;
-                                                                                                min-height: 46px;
-                                                                                                  padding: 0 20px;
-                                                                                                    border: 1px solid transparent;
-                                                                                                      border-radius: 12px;
-                                                                                                        background: var(--vq-blue);
-                                                                                                          color: white;
-                                                                                                            font-weight: 600;
-                                                                                                              cursor: pointer;
-                                                                                                                transition:
-                                                                                                                    background 180ms ease,
-                                                                                                                        transform 180ms ease;
-                                                                                                                        }
+.vq-wave-group {
+  transform-origin: center;
+  animation: vq-drift 18s ease-in-out infinite alternate;
+}
 
-                                                                                                                        .vq-button:hover {
-                                                                                                                          background: var(--vq-blue-hover);
-                                                                                                                            transform: translateY(-1px);
-                                                                                                                            }
+@keyframes vq-drift {
+  from {
+    transform: translate3d(-12px, 0, 0);
+  }
+  to {
+    transform: translate3d(12px, 10px, 0);
+  }
+}
 
-                                                                                                                            .vq-button:focus-visible,
-                                                                                                                            a:focus-visible,
-                                                                                                                            input:focus-visible,
-                                                                                                                            textarea:focus-visible {
-                                                                                                                              outline: 2px solid var(--vq-blue);
-                                                                                                                                outline-offset: 3px;
-                                                                                                                                }
+.vq-bg-fade {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 220px;
+  background: linear-gradient(180deg, rgba(246, 248, 252, 0) 0%, var(--vq-bg) 100%);
+}
 
-                                                                                                                                .vq-muted {
-                                                                                                                                  color: var(--vq-muted);
-                                                                                                                                  }
+/* Header */
+.vq-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(255, 255, 255, 0.74);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(221, 229, 241, 0.8);
+}
 
-                                                                                                                                  .vq-grid {
-                                                                                                                                    display: grid;
-                                                                                                                                      grid-template-columns: repeat(3, minmax(0, 1fr));
-                                                                                                                                        gap: 18px;
-                                                                                                                                        }
+.vq-nav {
+  position: relative;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
 
-                                                                                                                                        .vq-card {
-                                                                                                                                          padding: 24px;
-                                                                                                                                            background: linear-gradient(145deg, #14151b, #0d0e12);
-                                                                                                                                              border: 1px solid var(--vq-border);
-                                                                                                                                                border-radius: var(--vq-radius);
-                                                                                                                                                  transition:
-                                                                                                                                                      border-color 180ms ease,
-                                                                                                                                                          transform 180ms ease;
-                                                                                                                                                          }
+.vq-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
 
-                                                                                                                                                          .vq-card:hover {
-                                                                                                                                                            border-color: #42475a;
-                                                                                                                                                              transform: translateY(-3px);
-                                                                                                                                                              }
+.vq-brand-name {
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+}
 
-                                                                                                                                                              @media (max-width: 700px) {
-                                                                                                                                                                .vq-container {
-                                                                                                                                                                    width: calc(100% - 28px);
-                                                                                                                                                                      }
+.vq-brand-name span {
+  color: var(--vq-blue);
+}
 
-                                                                                                                                                                        .vq-grid {
-                                                                                                                                                                            grid-template-columns: 1fr;
-                                                                                                                                                                              }
+.vq-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-                                                                                                                                                                                .vq-card {
-                                                                                                                                                                                    padding: 19px;
-                                                                                                                                                                                      }
-                                                                                                                                                                                      }
+.vq-links {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 12px;
+  right: 12px;
+  flex-direction: column;
+  padding: 8px;
+  margin-top: 6px;
+  background: #ffffff;
+  border: 1px solid var(--vq-border);
+  border-radius: 16px;
+  box-shadow: var(--vq-shadow);
+}
 
-                                                                                                                                                                                      @media (prefers-reduced-motion: reduce) {
-                                                                                                                                                                                        *,
-                                                                                                                                                                                          *::before,
-                                                                                                                                                                                            *::after {
-                                                                                                                                                                                                scroll-behavior: auto !important;
-                                                                                                                                                                                                    animation-duration: 0.01ms !important;
-                                                                                                                                                                                                        transition-duration: 0.01ms !important;
-                                                                                                                                                                                                          }
-                                                                                                                                                                                                          }
-                                                                                                                                                                                                          /* VELOQIS AI — PREMIUM ANIMATED HOMEPAGE */
+.vq-links.is-open {
+  display: flex;
+}
 
-                                                                                                                                                                                                          .home-page {
-                                                                                                                                                                                                          min-height: 100vh;
-                                                                                                                                                                                                          overflow: hidden;
-                                                                                                                                                                                                          background:
-                                                                                                                                                                                                          radial-gradient(ellipse at 50% 12%, rgba(52, 120, 246, 0.16), transparent 38%),
-                                                                                                                                                                                                          #060608;
-                                                                                                                                                                                                          color: #f5f5f7;
-                                                                                                                                                                                                          }
+.vq-links a {
+  padding: 13px 14px;
+  border-radius: 10px;
+  font-weight: 500;
+  color: var(--vq-text);
+}
 
-                                                                                                                                                                                                          .topbar {
-                                                                                                                                                                                                          position: relative;
-                                                                                                                                                                                                          z-index: 5;
-                                                                                                                                                                                                          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-                                                                                                                                                                                                          backdrop-filter: blur(18px);
-                                                                                                                                                                                                          }
+.vq-links a:hover {
+  background: #f0f4fb;
+}
 
-                                                                                                                                                                                                          .brand {
-                                                                                                                                                                                                          color: #ffffff;
-                                                                                                                                                                                                          font-weight: 800;
-                                                                                                                                                                                                          letter-spacing: -0.8px;
-                                                                                                                                                                                                          }
+.vq-menu-btn {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 42px;
+  height: 42px;
+  padding: 0 11px;
+  background: #ffffff;
+  border: 1px solid var(--vq-border);
+  border-radius: 12px;
+  cursor: pointer;
+}
 
-                                                                                                                                                                                                          .hero {
-                                                                                                                                                                                                          position: relative;
-                                                                                                                                                                                                          isolation: isolate;
-                                                                                                                                                                                                          }
+.vq-menu-btn span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--vq-text);
+  border-radius: 2px;
+}
 
-                                                                                                                                                                                                          .hero::before {
-                                                                                                                                                                                                          content: "";
-                                                                                                                                                                                                          position: absolute;
-                                                                                                                                                                                                          z-index: -1;
-                                                                                                                                                                                                          width: 340px;
-                                                                                                                                                                                                          height: 340px;
-                                                                                                                                                                                                          top: 8%;
-                                                                                                                                                                                                          left: 50%;
-                                                                                                                                                                                                          transform: translateX(-50%);
-                                                                                                                                                                                                          border-radius: 50%;
-                                                                                                                                                                                                          background: radial-gradient(circle, rgba(52, 120, 246, 0.22), transparent 68%);
-                                                                                                                                                                                                          filter: blur(22px);
-                                                                                                                                                                                                          pointer-events: none;
-                                                                                                                                                                                                          animation: vq-glow 6s ease-in-out infinite alternate;
-                                                                                                                                                                                                          }
+/* Buttons */
+.vq-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.97rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
 
-                                                                                                                                                                                                          .hero::after {
-                                                                                                                                                                                                          content: "";
-                                                                                                                                                                                                          position: absolute;
-                                                                                                                                                                                                          z-index: -1;
-                                                                                                                                                                                                          width: 220px;
-                                                                                                                                                                                                          height: 220px;
-                                                                                                                                                                                                          top: 15%;
-                                                                                                                                                                                                          left: calc(50% - 110px);
-                                                                                                                                                                                                          border: 1px solid rgba(110, 155, 255, 0.15);
-                                                                                                                                                                                                          border-radius: 50%;
-                                                                                                                                                                                                          box-shadow: 0 0 65px rgba(52, 120, 246, 0.12), inset 0 0 45px rgba(52, 120, 246, 0.08);
-                                                                                                                                                                                                          pointer-events: none;
-                                                                                                                                                                                                          animation: vq-orbit 22s linear infinite;
-                                                                                                                                                                                                          }
+.vq-btn-sm {
+  min-height: 42px;
+  padding: 0 20px;
+}
 
-                                                                                                                                                                                                          @keyframes vq-glow {
-                                                                                                                                                                                                          from {
-                                                                                                                                                                                                          opacity: 0.45;
-                                                                                                                                                                                                          scale: 0.9;
-                                                                                                                                                                                                          }
-                                                                                                                                                                                                          to {
-                                                                                                                                                                                                          opacity: 1;
-                                                                                                                                                                                                          scale: 1.12;
-                                                                                                                                                                                                          }
-                                                                                                                                                                                                          }
+.vq-btn-primary {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, var(--vq-blue) 0%, var(--vq-blue-dark) 100%);
+  box-shadow: 0 8px 20px rgba(79, 127, 232, 0.35);
+}
 
-                                                                                                                                                                                                          @keyframes vq-orbit {
-                                                                                                                                                                                                          from {
-                                                                                                                                                                                                          transform: rotate(0deg) scale(0.92);
-                                                                                                                                                                                                          }
-                                                                                                                                                                                                          to {
-                                                                                                                                                                                                          transform: rotate(360deg) scale(1.08);
-                                                                                                                                                                                                          }
-                                                                                                                                                                                                          }
+.vq-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(79, 127, 232, 0.42);
+}
 
-                                                                                                                                                                                                          @media (max-width: 700px) {
-                                                                                                                                                                                                          .hero::before {
-                                                                                                                                                                                                          width: 260px;
-                                                                                                                                                                                                          height: 260px;
-                                                                                                                                                                                                          }
+.vq-btn-ghost {
+  background: #ffffff;
+  border-color: var(--vq-border);
+  color: var(--vq-text);
+}
 
-                                                                                                                                                                                                          .hero::after {
-                                                                                                                                                                                                          width: 170px;
-                                                                                                                                                                                                          height: 170px;
-                                                                                                                                                                                                          left: calc(50% - 85px);
-                                                                                                                                                                                                          }
-                                                                                                                                                                                                          }
+.vq-btn-ghost:hover {
+  background: #f0f4fb;
+}
 
-                                                                                                                                                                                                          @media (prefers-reduced-motion: reduce) {
-                                                                                                                                                                                                          .hero::before,
-                                                                                                                                                                                                          .hero::after {
-                                                                                                                                                                                                          animation: none;
-                                                                                                                                                                                                          }
-                                                                                                                                                                                                          }
+/* Hero */
+main {
+  position: relative;
+  z-index: 1;
+}
+
+.vq-hero {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 56px 18px 36px;
+  text-align: center;
+}
+
+.vq-eyebrow {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--vq-blue-dark);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--vq-border);
+  border-radius: 999px;
+}
+
+.vq-title {
+  font-size: clamp(2.1rem, 9vw, 4.2rem);
+  line-height: 1.07;
+  letter-spacing: -0.035em;
+  font-weight: 750;
+  color: var(--vq-text);
+}
+
+.vq-title em {
+  font-style: normal;
+  background: linear-gradient(120deg, #3f6fdc 0%, #8fa7cf 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.vq-lead {
+  max-width: 600px;
+  margin: 18px auto 0;
+  font-size: 1.05rem;
+  color: var(--vq-muted);
+}
+
+/* Prompt */
+.vq-prompt {
+  position: relative;
+  margin: 32px auto 0;
+  max-width: 720px;
+  padding: 12px;
+  text-align: left;
+  background: var(--vq-surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid #ffffff;
+  border-radius: 22px;
+  box-shadow: 0 18px 50px rgba(60, 90, 150, 0.16), 0 0 0 1px var(--vq-border);
+}
+
+.vq-prompt:focus-within {
+  box-shadow: 0 18px 50px rgba(60, 90, 150, 0.2), 0 0 0 2px rgba(79, 127, 232, 0.55);
+}
+
+.vq-input {
+  display: block;
+  width: 100%;
+  min-height: 64px;
+  max-height: 200px;
+  padding: 10px 8px;
+  resize: none;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--vq-text);
+  background: transparent;
+  border: 0;
+  outline: none;
+}
+
+.vq-input::placeholder {
+  color: #8b97ad;
+}
+
+.vq-prompt-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 4px 4px 0 8px;
+}
+
+.vq-hint {
+  display: none;
+  font-size: 0.78rem;
+  color: #8b97ad;
+}
+
+.vq-send {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  margin-left: auto;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--vq-blue) 0%, var(--vq-blue-dark) 100%);
+  border: 0;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(79, 127, 232, 0.35);
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.vq-send:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.vq-send:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.vq-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: vq-spin 0.7s linear infinite;
+}
+
+@keyframes vq-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mentions */
+.vq-mention-menu {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: calc(100% + 8px);
+  z-index: 25;
+  list-style: none;
+  padding: 6px;
+  background: #ffffff;
+  border: 1px solid var(--vq-border);
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(60, 90, 150, 0.2);
+}
+
+.vq-mention-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  width: 100%;
+  min-height: 48px;
+  padding: 9px 12px;
+  font: inherit;
+  text-align: left;
+  color: var(--vq-text);
+  background: transparent;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.vq-mention-item:hover,
+.vq-mention-item:focus-visible {
+  background: #eef3fc;
+  outline: none;
+}
+
+.vq-mention-tag {
+  font-weight: 700;
+  color: var(--vq-blue-dark);
+}
+
+.vq-mention-hint {
+  font-size: 0.82rem;
+  color: var(--vq-muted);
+}
+
+.vq-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  max-width: 720px;
+  margin: 16px auto 0;
+}
+
+.vq-chip {
+  min-height: 40px;
+  padding: 0 16px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--vq-blue-dark);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--vq-border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.vq-chip:hover:not(:disabled) {
+  background: #eef3fc;
+  border-color: #b8c9ee;
+}
+
+.vq-chip:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Chat output */
+.vq-chat {
+  max-width: 720px;
+  margin: 22px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+
+.vq-msg {
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--vq-border);
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(60, 90, 150, 0.07);
+}
+
+.vq-msg-user {
+  background: #eaf0fc;
+}
+
+.vq-msg-role {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--vq-blue-dark);
+}
+
+.vq-msg p {
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.vq-typing {
+  color: var(--vq-muted);
+}
+
+.vq-error {
+  padding: 12px 16px;
+  font-size: 0.94rem;
+  color: #9b2c2c;
+  background: #fff4f4;
+  border: 1px solid #f3c9c9;
+  border-radius: 14px;
+}
+
+.vq-error a {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* Trust strip */
+.vq-trust {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 8px 18px 24px;
+}
+
+.vq-trust-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.vq-trust-list li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 10px 12px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--vq-muted);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--vq-border);
+  border-radius: 14px;
+}
+
+.vq-trust-list svg {
+  flex: 0 0 auto;
+  color: var(--vq-blue);
+}
+
+/* Sections */
+.vq-section {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 48px 18px;
+  scroll-margin-top: 70px;
+}
+
+.vq-section-head {
+  max-width: 640px;
+  margin: 0 auto 30px;
+  text-align: center;
+}
+
+.vq-section-head h2 {
+  font-size: clamp(1.6rem, 6vw, 2.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.vq-section-head p:last-child {
+  margin-top: 10px;
+  color: var(--vq-muted);
+}
+
+.vq-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.vq-card {
+  padding: 22px;
+  background: var(--vq-surface);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--vq-border);
+  border-radius: 20px;
+  box-shadow: var(--vq-shadow);
+}
+
+.vq-card h3 {
+  margin-bottom: 6px;
+  font-size: 1.1rem;
+}
+
+.vq-card p {
+  color: var(--vq-muted);
+  font-size: 0.97rem;
+}
+
+.vq-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 14px;
+  color: var(--vq-blue-dark);
+  background: linear-gradient(145deg, #ffffff 0%, #e6edf9 100%);
+  border: 1px solid var(--vq-border);
+  border-radius: 13px;
+}
+
+/* Steps */
+.vq-steps {
+  list-style: none;
+  max-width: 760px;
+  margin: 0 auto;
+  display: grid;
+  gap: 14px;
+}
+
+.vq-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: var(--vq-surface);
+  border: 1px solid var(--vq-border);
+  border-radius: 20px;
+  box-shadow: var(--vq-shadow);
+}
+
+.vq-step h3 {
+  font-size: 1.08rem;
+  margin-bottom: 4px;
+}
+
+.vq-step p {
+  color: var(--vq-muted);
+}
+
+.vq-step-num {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--vq-blue) 0%, #8fa7cf 100%);
+  border-radius: 50%;
+}
+
+/* Pricing */
+.vq-plan {
+  display: flex;
+  flex-direction: column;
+}
+
+.vq-plan.is-featured {
+  background: #ffffff;
+  border-color: #a9c0f0;
+  box-shadow: 0 18px 44px rgba(79, 127, 232, 0.2);
+}
+
+.vq-price {
+  margin: 6px 0 2px;
+  font-size: 1.6rem;
+  font-weight: 750;
+  color: var(--vq-text) !important;
+  letter-spacing: -0.02em;
+}
+
+.vq-plan-note {
+  margin-bottom: 14px;
+}
+
+.vq-plan ul {
+  list-style: none;
+  display: grid;
+  gap: 9px;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.vq-plan li {
+  position: relative;
+  padding-left: 24px;
+  color: var(--vq-text);
+  font-size: 0.95rem;
+}
+
+.vq-plan li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 7px;
+  width: 10px;
+  height: 6px;
+  border-left: 2px solid var(--vq-blue);
+  border-bottom: 2px solid var(--vq-blue);
+  transform: rotate(-45deg);
+}
+
+/* FAQ */
+.vq-faq-section {
+  padding-top: 24px;
+}
+
+.vq-faq {
+  max-width: 760px;
+  margin: 0 auto;
+  display: grid;
+  gap: 10px;
+}
+
+.vq-faq-item {
+  background: var(--vq-surface);
+  border: 1px solid var(--vq-border);
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(60, 90, 150, 0.06);
+}
+
+.vq-faq-item summary {
+  position: relative;
+  display: block;
+  min-height: 52px;
+  padding: 16px 48px 16px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+
+.vq-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.vq-faq-item summary::after {
+  content: "+";
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--vq-blue);
+}
+
+.vq-faq-item[open] summary::after {
+  content: "\2212";
+}
+
+.vq-faq-item p {
+  padding: 0 18px 18px;
+  color: var(--vq-muted);
+}
+
+/* CTA */
+.vq-cta {
+  max-width: 960px;
+  margin: 24px 18px 56px;
+  padding: 40px 22px;
+  text-align: center;
+  background: linear-gradient(145deg, #ffffff 0%, #e9f0fc 100%);
+  border: 1px solid var(--vq-border);
+  border-radius: 26px;
+  box-shadow: var(--vq-shadow);
+}
+
+.vq-cta h2 {
+  font-size: clamp(1.5rem, 5.5vw, 2.2rem);
+  letter-spacing: -0.02em;
+}
+
+.vq-cta p {
+  margin: 10px 0 22px;
+  color: var(--vq-muted);
+}
+
+/* Footer */
+.vq-footer {
+  position: relative;
+  z-index: 1;
+  padding: 36px 18px 28px;
+  background: #ffffff;
+  border-top: 1px solid var(--vq-border);
+}
+
+.vq-footer-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 20px;
+}
+
+.vq-footer-brand {
+  grid-column: 1 / -1;
+}
+
+.vq-footer-brand p {
+  max-width: 340px;
+  margin-top: 12px;
+  color: var(--vq-muted);
+  font-size: 0.94rem;
+}
+
+.vq-footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vq-footer-col h4 {
+  margin-bottom: 2px;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--vq-text);
+}
+
+.vq-footer-col a {
+  color: var(--vq-muted);
+  font-weight: 500;
+}
+
+.vq-footer-col a:hover {
+  color: var(--vq-blue-dark);
+}
+
+.vq-copy {
+  max-width: 1160px;
+  margin: 28px auto 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--vq-border);
+  font-size: 0.85rem;
+  color: #8b97ad;
+}
+
+/* Tablet and up */
+@media (min-width: 720px) {
+  .vq-nav {
+    padding: 12px 28px;
+  }
+
+  .vq-menu-btn {
+    display: none;
+  }
+
+  .vq-links {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .vq-links a {
+    padding: 9px 14px;
+    color: var(--vq-muted);
+  }
+
+  .vq-links a:hover {
+    color: var(--vq-text);
+    background: transparent;
+  }
+
+  .vq-hero {
+    padding: 88px 28px 44px;
+  }
+
+  .vq-hint {
+    display: inline;
+  }
+
+  .vq-mention-item {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .vq-trust {
+    padding: 8px 28px 32px;
+  }
+
+  .vq-trust-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .vq-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .vq-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .vq-section {
+    padding: 64px 28px;
+  }
+
+  .vq-footer-inner {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+
+  .vq-footer-brand {
+    grid-column: auto;
+  }
+
+  .vq-cta {
+    margin: 24px auto 72px;
+    padding: 56px 32px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .vq-hero {
+    padding-top: 112px;
+  }
+
+  .vq-grid:not(.vq-grid-3) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .vq-steps {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1040px;
+  }
+
+  .vq-step {
+    flex-direction: column;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .vq-wave-group,
+  .vq-spinner {
+    animation: none;
+  }
+
+  .vq-btn,
+  .vq-send,
+  .vq-chip {
+    transition: none;
+  }
+}
